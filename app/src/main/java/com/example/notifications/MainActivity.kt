@@ -67,6 +67,23 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
             nm.notify(2,clickNotifi)
+        }
+        button3.setOnClickListener {
+            val i = Intent()
+            i.action = Intent.ACTION_VIEW
+            i.data = Uri.parse("https://www.github.com")
+
+            val pi = PendingIntent.getActivity(this, 123, i , PendingIntent.FLAG_UPDATE_CURRENT)
+
+            val clickNoti = NotificationCompat.Builder(this, "First")
+                .setContentTitle("Simple Title 3")
+                .addAction(R.drawable.ic_launcher_foreground, "Click me!", pi)
+                .setAutoCancel(true)
+                .setContentText("Sample Description 3")
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .build()
+            nm.notify(3, clickNoti)
 
 
         }
